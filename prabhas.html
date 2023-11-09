@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+  *
+  {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+  }
+  body
+  {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(#0b0235, #0b0235);
+    z-index: -999;
+  }
+  img
+  {
+    width: 100%;
+  }
+  ul
+  {
+    list-style: none;
+  }
+  a
+  {
+    text-decoration: none;
+  }
+  .container
+  {
+    max-width: 80rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+  nav
+  {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+  }
+  nav .container
+  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
+  }
+  .logo
+  {
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+  }
+  .links ul
+  {
+    display: flex;
+  }
+  .links a
+  {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    margin-right: 0.6rem;
+    color: #ffffff;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 1.5rem;
+    transition: 0.3s;
+  }
+  .links a.active,
+  .links a:hover
+  {
+    color: #0b0235;
+    background: #ffffff;
+  }
+  .hamburger-menu
+  {
+    width: 2.7rem;
+    height: 3rem;
+    z-index: 100;
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .hamburger-menu .bar 
+  {
+    position: relative;
+    width: 2.1rem;
+    height: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+  }
+  .bar::before,
+  .bar::after
+  {
+    content: '';
+    position: absolute;
+    width: 2.1rem;
+    height: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+  }
+  .bar::before
+  {
+    transform: translateY(-9px);
+  }
+  .bar::after
+  {
+    transform: translateY(9px);
+  }
+  .hero
+  {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero img
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .hero #base
+  {
+    z-index: 6;
+  }
+  .hero #text
+  {
+    position: absolute;
+    color: #fefefe;
+    font-size: clamp(3rem, 7.5vw, 8rem);
+    white-space: nowrap;
+    letter-spacing: 3px;
+    z-index: 5;
+    right: -850px;
+  }
+  #btn
+  {
+    font-size: 18px;
+    position: absolute;
+    color: #fefefe;
+    text-decoration: none;
+    padding: 8px 30px;
+    display: inline-block;
+    border: 2px solid #fefefe;
+    border-radius: 25px;
+    background: transparent;
+    z-index: 7;
+    letter-spacing: 0.51px;
+    transform: translateY(200px);
+  }
+  
+  .grid
+  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  
+  h4
+  {
+    font-weight: 700;
+    letter-spacing: 0.51px;
+    line-height: 1.35;
+    text-align: justify;
+    color: #0b0235;
+    font-size: 1.75rem;
+  }
+  .heading
+  {
+    font-size: 1.15rem;
+    color: #0b0235;
+    margin-bottom: 0.5rem;
+  }
+  p
+  {
+    color: #0b0235;
+    font-size: 0.9rem;
+    padding-bottom: 2rem;
+    padding-right: 1rem;
+  }
+  footer
+  {
+    background: #0b0235;
+    padding: 60px 0;
+    text-align: center;
+  }
+  footer img
+  {
+    max-width: 400px;
+  }
+  @media (max-width:992px)
+  {
+    .hamburger-menu
+    {
+      display: flex;
+    }
+    .links ul 
+    {
+      display: none;
+    }
+    h4 
+    {
+      font-size: 1.2rem;
+    }
+    .heading
+    {
+      font-size: 1rem;
+    }
+    p 
+    {
+      font-size: 0.8rem;
+    }
+  }
+  @media (max-width: 768px)
+  {
+    .grid
+    {
+      grid-template-columns: 1fr;
+    }
+    
+  }
+</style>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="">
+      </div>
+      
+      <div class="hamburger-menu">
+        <div class="bar"></div>
+      </div>
+    </div>
+  </nav>
+  <section class="hero">
+    <img src="tollywood/prabhas.png" class="translateX" data-speed="0.25" id="moon" alt="">
+    
+    <h1 id="text" class="translateX" data-speed="-6">Prabhas</h1>
+    <a href="index.html" id="btn">Home</a>
+    
+  </section>
+  <section id="about" class="section-padding">
+    <div class="container grid">
+      
+      
+    </div>
+    <div class="container grid">
+      
+      
+    </div>
+    <div class="container grid">
+      
+      
+    </div>
+    <div class="container grid">
+      
+      
+    </div>
+    <div class="container grid">
+      
+      
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <a href="#">
+        <img src="images/logo.png" alt="">
+      </a>
+    </div>
+    <style>
+        <style>
+    /* CSS styles go here */
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    
+    
+    
+    .movie {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .movie img {
+      max-width: 100px;
+      margin-right: 20px;
+    }
+    
+    .movie .details {
+      flex-grow: 1;
+    }
+    
+    .movie h2 {
+      margin: 0;
+      color: #333333;
+    }
+    
+    .movie p {
+      margin: 5px 0;
+      color: #666666;
+    }
+    
+    .movie .rating {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #f5a623;
+      color: #ffffff;
+      border-radius: 5px;
+    }
+    
+    .movie .description {
+      margin-top: 10px;
+      color: #888888;
+    }
+    
+    .menu {
+      background-color: #333333;
+      color: #ffffff;
+      padding: 10px;
+    }
+    
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .menu li {
+      margin-right: 10px;
+    }
+    
+    .menu li a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    
+    .menu li a:hover {
+      background-color: #555555;
+    }
+  </style>
+</head>
+<body>
+  
+  
+  
+  
+  <div class="container">
+    <div class="movie">
+      <img src="tollywood/bahu1.png" alt="Movie 1">
+      <div class="details">
+        <h2>Movie 1</h2>
+        <p>Genre: Action</p>
+        <p>Release Date: January 1, 2022</p>
+        <p>Director: John Doe</p>
+        <span class="rating">8.5</span>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec arcu id nisl pulvinar iaculis.</p>
+      </div>
+    </div>
+    
+    <div class="movie">
+      <img src="tollywood/saaho.png" alt="Movie 2">
+      <div class="details">
+        <h2>Movie 2</h2>
+        <p>Genre: Drama</p>
+        <p>Release Date: February 15, 2022</p>
+        <p>Director: Jane Smith</p>
+        <span class="rating">7.9</span>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec arcu id nisl pulvinar iaculis.</p>
+      </div>
+    </div>
+    
+    <div class="movie">
+      <img src="tollywood/billa.png" alt="Movie 3">
+      <div class="details">
+        <h2>Movie 3</h2>
+        <p>Genre: Comedy</p>
+        <p>Release Date: March 23, 2022</p>
+        <p>Director: Mark Johnson</p>
+        <span class="rating">6.8</span>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec arcu id nisl pulvinar iaculis.</p>
+      </div>
+    </div>
+    
+    <div class="movie">
+      <img src="tollywood/bahu2.png" alt="Movie 4">
+      <div class="details">
+        <h2>Movie 4</h2>
+        <p>Genre: Thriller</p>
+        <p>Release Date: April 10, 2022</p>
+        <p>Director: Sarah Johnson</p>
+        <span class="rating">9.2</span>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec arcu id nisl pulvinar iaculis.</p>
+      </div>
+    </div>
+      <div class="movie">
+        <img src="tollywood/bahu2.png" alt="Movie 4">
+        <div class="details">
+          <h2>Movie 4</h2>
+          <p>Genre: Thriller</p>
+          <p>Release Date: April 10, 2022</p>
+          <p>Director: Sarah Johnson</p>
+          <span class="rating">9.2</span>
+          <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec arcu id nisl pulvinar iaculis.</p>
+        </div>
+    </div>
+    
+    <!-- Add more movies here -->
+    
+  </div>
+        
+        
+  </footer>
+   <script>
+     const translateX = document.querySelectorAll(".translateX");
+const translateY = document.querySelectorAll(".translateY");
+window.addEventListener("scroll" ,() => {
+  let scroll = window.pageYOffset;
+  translateX.forEach(element => {
+    let speed = element.dataset.speed;
+    element.style.transform = `translateX(${scroll * speed}px)`;
+  })
+  translateY.forEach(element => {
+    let speed = element.dataset.speed;
+    element.style.transform = `translateY(${scroll * speed}px)`;
+  })
+})
+   </script>
+</body>
+</html>
